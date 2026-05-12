@@ -4,6 +4,7 @@ python-dotenv
 httpx
 ipykernel
 gunicorn
+flask-cors
 
 numpy
 scipy
