@@ -3,6 +3,7 @@ uvicorn
 python-dotenv
 httpx
 ipykernel
+gunicorn
 
 numpy
 scipy
