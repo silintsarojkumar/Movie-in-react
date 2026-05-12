@@ -7,15 +7,20 @@ function Movie() {
   const [movie, setMovie] = useState(null);
   const [reco, setReco] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/movies/${id}`)
-      .then((res) => {
-        setMovie(res.data.movie);
-        setReco(res.data.recommendations);
-      })
-      .catch((err) => console.log(err));
-  }, [id]);
+  const API_BASE =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://movie-in-react.onrender.com";
+
+useEffect(() => {
+  axios
+    .get(`${API_BASE}/movies/${id}`)
+    .then((res) => {
+      setMovie(res.data.movie);
+      setReco(res.data.recommendations);
+    })
+    .catch((err) => console.log(err));
+}, [id]);
 
   if (!movie) return <h2 className="font-bold text-9xl text-center">Loading...</h2>;
 

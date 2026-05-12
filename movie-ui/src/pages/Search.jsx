@@ -6,14 +6,19 @@ function Search() {
   const { query } = useParams();
   const [results, setResults] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/search/${query}`)
-      .then(res => {
-        setResults(res.data.results);
-      })
-      .catch(err => console.log(err));
-  }, [query]);
+  const API =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://movie-in-react.onrender.com";
+
+useEffect(() => {
+  if (!query) return;
+
+  axios
+    .get(`${API}/search/${query}`)
+    .then(res => setResults(res.data.results))
+    .catch(err => console.log(err));
+}, [query]);
 
   return (
     <div className="p5">

@@ -12,25 +12,30 @@ function Home() {
   const [loading, setLoading] = useState(false);
 
   // fetch movies
-  const fetchMovies = async (pageNum) => {
-    if (loading || !hasMore) return;
+const API =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://movie-in-react.onrender.com";
 
-    setLoading(true);
+const fetchMovies = async (pageNum) => {
+  if (loading || !hasMore) return;
 
-    try {
-      const res = await axios.get(
-        `http://localhost:5000/movies?page=${pageNum}`
-      );
+  setLoading(true);
 
-      setMovies((prev) => [...prev, ...res.data.movies]);
-      setHasMore(res.data.has_more);
-      setPage(pageNum);
-    } catch (err) {
-      console.log(err);
-    }
+  try {
+    const res = await axios.get(
+      `${API}/movies?page=${pageNum}`
+    );
 
-    setLoading(false);
-  };
+    setMovies((prev) => [...prev, ...res.data.movies]);
+    setHasMore(res.data.has_more);
+    setPage(pageNum);
+  } catch (err) {
+    console.log(err);
+  }
+
+  setLoading(false);
+};
 
   // initial load
   useEffect(() => {

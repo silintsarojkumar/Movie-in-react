@@ -91,17 +91,9 @@ def recommend(movie_id):
 # =========================
 # HOME ROUTE
 # =========================
-@app.route('/')
+@app.route("/")
 def home():
-    movies = df_model.to_dict(orient='records')
-
-    for m in movies[:100]:
-        m["poster"] = get_poster_by_title(m.get("title"))
-
-    return jsonify({
-        "movies": movies[:100],
-        "total": len(movies)
-    })
+    return "API Running"
 
 # =========================
 # PAGINATION ROUTE
