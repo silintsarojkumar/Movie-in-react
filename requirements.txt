@@ -1,20 +1,14 @@
-fastapi
-uvicorn
-python-dotenv
-httpx
-ipykernel
-gunicorn
+flask
 flask-cors
+gunicorn
 
 numpy
-scipy
 pandas
 scikit-learn
+scipy
 joblib
 nltk
-streamlit
-flask
-pandas
-scikit-learn
-numpy
-streamlit-option-menu
+rapidfuzz
+
+python-dotenv
+httpx
