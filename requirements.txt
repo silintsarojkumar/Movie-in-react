@@ -9,6 +9,7 @@ scipy
 joblib
 nltk
 rapidfuzz
+requests
 
 python-dotenv
 httpx
